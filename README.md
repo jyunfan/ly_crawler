@@ -24,3 +24,8 @@ Usage
 # Open Firefox and go to url http://lci.ly.gov.tw/lcew/index_5.zul  You will see the page changes automatically.  Please wait about 15 minutes.
 # Open the source directory and find the output link.db
 # $ python shelve2json.py link > link.json
+
+Example Data
+------------
+Feel free to take a glance of links.
+We have 2 formats now: data/journals_link.html and data/journals_link.json
