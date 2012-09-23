@@ -13,17 +13,17 @@ Requirement
 
 Installation
 ------------
-# Make sure you installed Greasemonkey, a Firefox add-on
-# Download source from https://github.com/jyunfan/ly_crawler/zipball/master
-# Extract the zip file.
-# Open lci_link_extractor.user.js in Firefox.  Follow the instruction.
+* Make sure you installed Greasemonkey, a Firefox add-on
+* Download source from https://github.com/jyunfan/ly_crawler/zipball/master
+* Extract the zip file.
+* Open lci_link_extractor.user.js in Firefox.  Follow the instruction.
 
 Usage
 -----
-# $ python lci_link.py
-# Open Firefox and go to url http://lci.ly.gov.tw/lcew/index_5.zul  You will see the page changes automatically.  Please wait about 15 minutes.
-# Open the source directory and find the output link.db
-# $ python shelve2json.py link > link.json
+* $ python lci_link.py
+* Open Firefox and go to url http://lci.ly.gov.tw/lcew/index_5.zul  You will see the page changes automatically.  Please wait about 15 minutes.
+* Open the source directory and find the output link.db
+* $ python shelve2json.py link > link.json
 
 Example Data
 ------------

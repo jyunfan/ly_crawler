@@ -21,7 +21,7 @@ ${{
 }}
 </ul>
 <div><a href="http://lci.ly.gov.tw/">Data Source</a></div>
-<div><a href="">JSON format</div>
+<div><a href="https://raw.github.com/jyunfan/ly_crawler/master/data/journals_link.json">JSON format</div>
 </body>
 </html>
     """
