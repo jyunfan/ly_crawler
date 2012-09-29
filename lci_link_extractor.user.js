@@ -7,6 +7,8 @@
 // @require     http://code.jquery.com/jquery-1.7.2.min.js
 // ==/UserScript==
 
+var keep_process = true;
+
 var dispatchMouseEvent = function(target, var_args) {
   var e = document.createEvent("MouseEvents");
   e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
@@ -16,10 +18,14 @@ var dispatchMouseEvent = function(target, var_args) {
 function reportLink(key, datahash) {
   GM_xmlhttpRequest({
     method: 'POST',
-    url: "http://localhost:8080/link/" + encodeURIComponent(key),
+    url: "http://localhost:8080/journals_link/" + encodeURIComponent(key),
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     data: jQuery.param(datahash),
-    //onload: function(responseDetails) { }
+    onload: function(response) {
+      // Stop process if we the key is already in db
+      if (response.responseText == '1')
+        keep_process = false;
+    }
   });
 }
 
@@ -51,9 +57,9 @@ function fetch_journal_link(button) {
 
     var key = journal['session'].replace(/[^\d]/g, '');
     if (journal['category'].match('常會'))
-      key = 'N' + key;
+      key = key + 'N';
     else
-      key = 'T' + key;
+      key = key + 'T';
 
     reportLink(key, journal);
   }, 1500);
@@ -64,6 +70,8 @@ function extract_page() {
   var index_shift = 10;
   var gap = 3000;
   $("button:contains('原始檔')").each(function(index) {
+    if (!keep_process) { return; }
+
     if (index<index_shift) {
       return;
     }
@@ -71,6 +79,8 @@ function extract_page() {
     ++button_count;
     setTimeout(function() { fetch_journal_link(button); }, button_count*gap);
   });
+
+  if (!keep_process) { return; }
 
   var nextbtn = $('a:contains("Next")')[0];
   if (nextbtn) {
