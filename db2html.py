@@ -46,11 +46,11 @@ def myTemplate(db):
 ${{
     for key in sorted(db, key=db.get):
         item = db[key]
-        s = '<li id="%s">%s %s <a id="%s" href="%s">doc</a> <a id="%s" href="%s">html</a></li>\\n' % (key, item['category'], item['session'], key+"-doc", item['doc'], key+"-html", item['html'])
+        s = '<li id="%s">%s (%s) <a id="%s" href="%s">doc</a> <a id="%s" href="%s">html</a> <a id="%s" href="%s">txt</a> Date:%s</li>\\n' % (key, item['session'], item['category'], key+"-doc", item['doc_mirror'], key+"-html", item['html_mirror'], key+"-txt", item['txt'], item['date'])
         out.append(s.encode('utf-8'))
 }}
 </ul>
-<div><a href="journals_link.json" class="btn btn-primary">JSON格式</a></div>
+<div><a href="journals_link.json">檔案連結:JSON格式</a></div>
 <div><a href="http://lci.ly.gov.tw/">資料來源:立法院議事暨公報管理系統</a></div>
 </div>
 </body>
