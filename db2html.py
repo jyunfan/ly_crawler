@@ -5,6 +5,7 @@
 Create html page
 """
 
+import re
 import json
 import fileinput
 
@@ -41,12 +42,15 @@ def myTemplate(db):
       </div>
     </div>
 <div class="container">
-<h1>立法院議事錄</h1>
+<div class="hero-unit">
+<h2>立法院議事錄</h2>
+<p>尋找立法院的開會記錄嗎？此網站收集立法院第六屆起的議事錄，歡迎使用及推廣。</p><p>立法院管理系統提供的原始的資料格式為Word doc以及html，為了方便分析，我們亦提供純文字格式。</p>
+</div>
 <ul>
 ${{
-    for key in sorted(db, key=db.get):
+    for key in sorted(db, key=db.get, reverse=True):
         item = db[key]
-        s = '<li id="%s">%s (%s) <a id="%s" href="%s">doc</a> <a id="%s" href="%s">html</a> <a id="%s" href="%s">txt</a> Date:%s</li>\\n' % (key, item['session'], item['category'], key+"-doc", item['doc_mirror'], key+"-html", item['html_mirror'], key+"-txt", item['txt'], item['date'])
+        s = '<li id="%s">%s (%s) <a id="%s" href="%s">doc</a> <a id="%s" href="%s">html</a> <a id="%s" href="%s">txt</a> %s</li>\\n' % (key, item['session'], item['category'], key+"-doc", item['doc_mirror'], key+"-html", item['html_mirror'], key+"-txt", item['txt'], changeDateFormat(item['date']) )
         out.append(s.encode('utf-8'))
 }}
 </ul>
@@ -56,6 +60,11 @@ ${{
 </body>
 </html>
 """
+
+def changeDateFormat(date):
+    date = re.sub(r'(\d+)/(\d+)/(\d+)', ur'\1年\2月\3日', date)
+    date = u'議期:民國%s' % date
+    return date
 
 if __name__ == '__main__':
     db = json.loads(''.join(fileinput.input()))
