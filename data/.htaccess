@@ -1,4 +1,6 @@
 # Do not remove this line, otherwise mod_rewrite rules will stop working
 RewriteBase /
+# Tell browsers all files are encoded in UTF-8
+AddDefaultCharset UTF-8
 AddType text/plain .txt
 DirectoryIndex journals_link.html
