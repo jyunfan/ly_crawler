@@ -8,7 +8,6 @@ Data come from http://lci.ly.gov.tw/
 
 執行程式需求
 ------------
-* Greasemonkey 1.0  https://addons.mozilla.org/zh-TW/firefox/addon/greasemonkey/
 * Python 2.7+
 * python module: lxml
 
