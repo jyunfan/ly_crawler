@@ -4,9 +4,9 @@
 import os
 import glob
 
-htmlfiles = glob.glob('data/data/*.html')
+htmlfiles = glob.glob('data/*.html')
 for htmlfile in htmlfiles:
     textfile = os.path.splitext(htmlfile)[0] + '.txt'
     if not os.path.isfile(textfile):
-        os.system('python html2plaintxt.py %s' % htmlfile)
+        os.system('html2plaintxt.py %s' % htmlfile)
 

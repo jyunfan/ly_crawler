@@ -29,4 +29,4 @@ if __name__ == '__main__':
 
     for key in db:
         get_url(db[key]['doc'], os.path.join('data', key + '.doc'))
-        get_url(db[key]['html'], os.path.join('data', key + '.html'))
+        get_url(db[key]['htm'], os.path.join('data', key + '.html'))
