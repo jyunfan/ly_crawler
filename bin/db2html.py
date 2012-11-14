@@ -44,7 +44,7 @@ def myTemplate(db):
 <div class="container">
 <div class="hero-unit">
 <h2>立法院議事錄</h2>
-<p>尋找立法院的開會記錄嗎？此網站收集立法院第六屆起的議事錄，歡迎使用及推廣。</p><p>立法院管理系統提供的原始的資料格式為Word doc以及html，為了方便分析，我們亦提供純文字格式。</p>
+<p>立法院的開會紀錄有公開在<a href="http://lci.ly.gov.tw">議事暨公報管理系統</a>，其中包含許多有用的資料，如討論事項和表决結果。惟可惜系統提供的原始的資料格式為Word doc以及html，不方便分析內容。因此我們收集立法院第六屆起的議事錄，並提供純文字格式，歡迎使用及推廣。</p>
 </div>
 <ul>
 ${{
@@ -56,6 +56,7 @@ ${{
 </ul>
 <div><a href="journals_link.json">檔案連結:JSON格式</a></div>
 <div><a href="http://lci.ly.gov.tw/">資料來源:立法院議事暨公報管理系統</a></div>
+<div><a href="https://github.com/jyunfan/ly_crawler">資料擷取程式</a></div>
 </div>
 </body>
 </html>
